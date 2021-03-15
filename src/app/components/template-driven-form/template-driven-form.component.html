@@ -1,0 +1,105 @@
+<div class="container">
+    <div [hidden]="submitted">
+      <h1>Shipping Form</h1>
+      <form (ngSubmit)="onSubmit()" #shippingForm="ngForm">
+        <div class="form-group">
+          <label for="firstName">First name</label>
+          <input type="text" class="form-control" id="firstName"
+                 required
+                 [(ngModel)]="formModel.firstName" name="firstName"
+                 #firstName="ngModel">
+          <div [hidden]="firstName.valid || firstName.pristine"
+               class="alert alert-danger">
+            Required
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last name</label>
+            <input type="text" class="form-control" id="lastName"
+                   required
+                   [(ngModel)]="formModel.lastName" name="lastName"
+                   #lastName="ngModel">
+            <div [hidden]="lastName.valid || lastName.pristine"
+                 class="alert alert-danger">
+              Required
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="addressLineOne">Street address</label>
+            <input type="text" class="form-control" id="addressLineOne"
+                   required
+                   autocomplete="address-line1"
+                   [(ngModel)]="formModel.addressLineOne" name="addressLineOne"
+                   #addressLineOne="ngModel">
+            <div [hidden]="addressLineOne.valid || addressLineOne.pristine"
+                 class="alert alert-danger">
+              Required
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="addressLineTwo">Line two</label>
+            <input type="text" class="form-control" id="addressLineTwo"
+                    autocomplete="address-line2"
+                   [(ngModel)]="formModel.addressLineTwo" name="addressLineTwo"
+                   #addressLineTwo="ngModel">
+        </div>
+  
+        <div class="form-group">
+          <label for="power">State</label>
+          <select class="form-control" id="state"
+                  required
+                  [(ngModel)]="formModel.state" name="state"
+                  #state="ngModel">
+            <option *ngFor="let state of states" [value]="state">{{state}}</option>
+          </select>
+          <div [hidden]="state.valid || state.pristine" class="alert alert-danger">
+            Required
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="postalCode">Zip code</label>
+            <input type="text" class="form-control" id="postalCode"
+                   required
+                   [(ngModel)]="formModel.postalCode" name="postalCode"
+                   #postalCode="ngModel">
+            <div [hidden]="postalCode.valid || postalCode.pristine"
+                 class="alert alert-danger">
+              Required
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="country">Country</label>
+            <input type="text" class="form-control" id="country"
+                   required
+                   [(ngModel)]="formModel.country" name="country"
+                   #country="ngModel">
+            <div [hidden]="country.valid || country.pristine"
+                 class="alert alert-danger">
+              Required
+            </div>
+        </div>
+  
+        <button type="submit" class="btn btn-success" [disabled]="!shippingForm.form.valid">Submit</button>
+        <button type="button" class="btn btn-default" (click)="clearForm(); shippingForm.reset()">Clear form</button>
+        <i>with</i> reset
+  
+        &nbsp;&nbsp;
+        <button type="button" class="btn btn-default" (click)="clearForm()">Clear form</button>
+        <i>without</i> reset
+  
+        <pre>
+            {{formModel | json }}
+            Valid : {{shippingForm.form.valid}}
+        </pre>
+      </form>
+    </div>
+  
+    <div [hidden]="!submitted">
+      <h2>You submitted the following values:</h2>
+      <pre>
+          {{formModel | json}}
+      </pre>
+      <br>
+      <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+    </div>
+</div>

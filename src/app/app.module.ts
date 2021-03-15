@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { TemplateDrivenFormComponent } from './components/template-driven-form/template-driven-form.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ForbiddenValidatorDirective } from './directives/custom-validators/forbidden-name.validator';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TemplateDrivenFormComponent
+    TemplateDrivenFormComponent,
+    ForbiddenValidatorDirective
   ],
   imports: [
     BrowserModule,

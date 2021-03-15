@@ -16,6 +16,8 @@ export interface ShippingAddress{
   state: string;
   postalCode: string;
   country: string;
+  email: string;
+  confirmEmail: string;
 }
 
 @Component({
@@ -34,7 +36,9 @@ export class TemplateDrivenFormComponent {
     addressLineTwo: '',
     state: '',
     postalCode: '',
-    country: ''
+    country: '',
+    email: '', 
+    confirmEmail: ''
   };
   
   public clearForm(): void {
@@ -45,7 +49,9 @@ export class TemplateDrivenFormComponent {
       addressLineTwo: '',
       state: '',
       postalCode: '',
-      country: ''
+      country: '',
+      email: '', 
+      confirmEmail: ''
     };
   }
 

@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
  * HTML Autofill documentation: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
  * Introduction to Angular Forms: https://angular.io/guide/forms-overview
  * Building a Template-Driven form: https://angular.io/guide/forms (This is is basis for this demo)
- * 
+ * Validating Angular forms: https://angular.io/guide/form-validation
  */
 
 export interface ShippingAddress{

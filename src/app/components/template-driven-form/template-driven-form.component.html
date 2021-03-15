@@ -60,11 +60,17 @@
             <label for="postalCode">Zip code</label>
             <input type="text" class="form-control" id="postalCode"
                    required
+                   minlength="5"
                    [(ngModel)]="formModel.postalCode" name="postalCode"
                    #postalCode="ngModel">
-            <div [hidden]="postalCode.valid || postalCode.pristine"
+            <div *ngIf="!postalCode.valid && !postalCode.pristine"
                  class="alert alert-danger">
-              Required
+                 <div *ngIf="postalCode.errors.required">
+                    Required
+                 </div>
+                <div *ngIf="postalCode.errors.minlength">
+                    Postal code must be at least 5 characters long.
+                </div>
             </div>
         </div>
         <div class="form-group">

@@ -7,12 +7,14 @@ import { TemplateDrivenFormComponent } from './components/template-driven-form/t
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ForbiddenValidatorDirective } from './directives/custom-validators/forbidden-name.validator';
+import { validateMatchingEmailsDirective } from './directives/custom-validators/email-confirm.validator';
 
 @NgModule({
   declarations: [
     AppComponent,
     TemplateDrivenFormComponent,
-    ForbiddenValidatorDirective
+    ForbiddenValidatorDirective,
+    validateMatchingEmailsDirective
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 <div class="container">
     <div [hidden]="submitted">
       <h1>Shipping Form</h1>
-      <form (ngSubmit)="onSubmit()" #shippingForm="ngForm">
+      <form (ngSubmit)="onSubmit()" #shippingForm="ngForm" confirmEmails>
         <div class="form-group">
           <label for="firstName">First name</label>
           <input type="text" class="form-control" id="firstName"
@@ -96,20 +96,22 @@
                  required
                  [(ngModel)]="formModel.email" name="email"
                  #email="ngModel">
-          <div [hidden]="email.valid || email.pristine"
+          <div *ngIf="!email.valid && !email.pristine"
                class="alert alert-danger">
-            Required
+            <div *ngIf="email.errors.required">Required</div>
+            <div *ngIf="email.errors.invalidConfirmEmails">Emails do not match</div>
           </div>
         </div>
         <div class="form-group">
           <label for="confirmEmail">Confirm Email</label>
-          <input type="text" class="form-control" id="lastName"
+          <input type="text" class="form-control" id="confirmEmail"
                 required
                 [(ngModel)]="formModel.confirmEmail" name="confirmEmail"
                 #confirmEmail="ngModel">
-          <div [hidden]="confirmEmail.valid || confirmEmail.pristine"
+          <div *ngIf="!confirmEmail.valid && !confirmEmail.pristine"
               class="alert alert-danger">
-            Required
+              <div *ngIf="confirmEmail.errors.required">Required</div>
+              <div *ngIf="confirmEmail.errors.invalidConfirmEmails">Emails do not match</div>
           </div>
         </div>
   

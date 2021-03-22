@@ -3,11 +3,8 @@ import { AbstractControl, FormGroup, NgForm, NG_VALIDATORS, ValidationErrors, Va
 import { removeError } from "./validatorHelperFunctions";
 
 /**
- * Store some of the common form validators that we use.
  * 
- * These should be pure functions that do not have any side effects and can be run without dependency injection....
- * 
- * 
+ * https://basarat.gitbook.io/typescript/future-javascript/spread-operator
  */
 @Directive({
     selector: '[confirmEmails]',

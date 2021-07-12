@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ShippingAddress } from 'src/app/models/shipping-address';
 
 /**
  * Resources
@@ -7,18 +8,6 @@ import { Component, OnInit } from '@angular/core';
  * Building a Template-Driven form: https://angular.io/guide/forms (This is is basis for this demo)
  * Validating Angular forms: https://angular.io/guide/form-validation
  */
-
-export interface ShippingAddress{
-  firstName: string;
-  lastName: string;
-  addressLineOne: string;
-  addressLineTwo?: string;
-  state: string;
-  postalCode: string;
-  country: string;
-  email: string;
-  confirmEmail: string;
-}
 
 @Component({
   selector: 'template-driven-form',

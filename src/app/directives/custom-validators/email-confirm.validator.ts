@@ -11,11 +11,10 @@ import { removeError } from "./validatorHelperFunctions";
     providers: [{ provide: NG_VALIDATORS, useExisting: validateMatchingEmailsDirective, multi: true }]
 })
 export class validateMatchingEmailsDirective implements Validator {
-    validate(control: AbstractControl): ValidationErrors {
+    validate(control: AbstractControl): ValidationErrors | null {
         if(!control) return null;
         return matchingEmailsValidator(control);
     }
-
 }
 export const matchingEmailsValidator: ValidatorFn = (form: FormGroup): ValidationErrors | null => {
     if(!form) return null;

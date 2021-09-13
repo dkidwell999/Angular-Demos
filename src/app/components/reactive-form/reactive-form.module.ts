@@ -10,9 +10,10 @@ import { ReactiveFormComponent } from "./reactive-form.component";
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
+  exports: [ ReactiveFormComponent],
   providers: []
 })
 export class ReactiveFormModule { }

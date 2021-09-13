@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ShippingAddress } from 'src/app/models/shipping-address';
 import { ReactiveFormValidators } from './reactive-form-validators';
@@ -51,6 +51,7 @@ class ShippingDataForm implements ShippingFormDataContract{
     this.lastName.setValue(json.lastName);
     this.lastName.setValidators([Validators.required]);
     */
+   this.postalCode.setValidators([Validators.required]);
    this.email.setValidators([Validators.required, Validators.email]);
    this.confirmEmail.setValidators([Validators.required, Validators.email]);
     if(isLocked)
@@ -78,10 +79,55 @@ export class ReactiveFormComponent implements OnInit {
   });
   private isFormInitializing: boolean = false;
 
-  constructor(private formBuilder: FormBuilder) { }
+  private formFocus: FormControl;
+
+  constructor(private formBuilder: FormBuilder, private elRef: ElementRef) { }
 
   ngOnInit(): void {
     this.initForm();
+  }
+
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    if (event.key === 'ArrowRight') {
+      this.focusNext();
+    }
+  }
+  public onControlFocus(control: string): void {
+    this.formFocus = this.shippingForm.controls[control] as FormControl;
+  }
+
+  private focusNext(): void {
+    let focusNextControl: boolean = false;
+    let focusSet: boolean = false;
+    let firstKey: string;
+    let invalidControls = Object.keys(this.shippingForm.controls).filter(key => {
+      return !this.shippingForm.controls[key].valid 
+    });
+    let currentControlInvalid: boolean;
+    Object.keys(this.shippingForm.controls).forEach((key, index) => {
+      currentControlInvalid = this.shippingForm.controls[key].invalid;
+      //Find the first invalid control, we will need it later in the case that the active focus is on the last control on the form
+      if(!firstKey && currentControlInvalid){
+        firstKey = key;
+      }
+      //If the current control is invalid 
+      //AND the previous control is the currently focused one 
+      //AND we haven't already set the focus.. Then set the focus on this control.
+      if(currentControlInvalid && focusNextControl && !focusSet){
+        this.elRef.nativeElement.querySelector('[formcontrolname = "' + key + '"]').focus();
+        focusSet = true;
+      }
+      else if(this.shippingForm.controls[key] == this.formFocus){
+        focusNextControl = true;
+      }
+      else if(!focusSet && focusNextControl && index == Object.keys(this.shippingForm.controls).length - 1){
+        //If we are on the last control and we need to set the 'next' control 
+        //AND we haven't already focused on a control
+        //Then we need to set the focus to the first invalid control we found
+        this.elRef.nativeElement.querySelector('[formcontrolname = "' + firstKey + '"]').focus();
+      }
+    });
   }
 
   private initForm(): void {
@@ -93,7 +139,7 @@ export class ReactiveFormComponent implements OnInit {
 
     Object.keys(form).forEach(key => this.shippingForm.setControl(key, form[key]));
     //Add a custom validator onto the form
-    this.shippingForm.setValidators([ReactiveFormValidators.validateEmails()])
+    this.shippingForm.setValidators([ReactiveFormValidators.validateEmails()]);
 
     setTimeout(() => this.isFormInitializing = false);
   }

@@ -1,2 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import '/src/app/shared/styles/default-theme.scss';
+
+body {
+    height: 100%;
+    background-color: $primary-background-color;
+    color: $primary-text-color;
+    app-root {
+        height: 100%;
+    }
+}

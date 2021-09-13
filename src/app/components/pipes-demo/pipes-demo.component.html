@@ -1,0 +1,63 @@
+<div class="pipes-demo">
+    <div class="pipes-demo__header">
+        Pipes Demo!
+    </div>
+    <hr>
+    <div class="pipes-demo__demo">
+        <div class="pipes-demo__content pipes-demo__content--demo-title">
+            String shortener
+        </div>
+        <div class="pipes-demo__content ppipes-demo__content--input">
+            <input type="text" [(ngModel)]="inputValue">
+        </div>
+        <div class="pipes-demo__content pipes-demo__content--pipe">
+            Pipe return: {{ inputValue | stringLength : 8 | uppercase }}
+        </div>
+    </div>
+    <hr>
+
+    <div class="pipes-demo__demo">
+        <div class="pipes-demo__content pipes-demo__content--demo-title">
+            Max number
+        </div>
+        <div class="pipes-demo__content pipes-demo__content--input">
+            <input type="number" [(ngModel)]="numValue">
+        </div>
+        <div class="pipes-demo__content">
+            <button (click)="addNumberToNums(numValue)">Add mutably</button>
+        </div>
+        <div class="pipes-demo__content">
+            <button (click)="addNumberToNumsImmutably(numValue)">Add immutably</button>
+        </div>
+        <div class="pipes-demo__content">
+            <div *ngFor="let num of nums">
+                {{ num }}, 
+            </div>
+        </div>
+
+        <div class="pipes-demo__content pipes-demo__content--pipe">
+            Pipe return: {{ nums | maxNumber }}
+        </div>
+    </div>
+    <hr>
+    <div class="pipes-demo__demo">
+        <div class="pipes-demo__content pipes-demo__content--demo-title">
+            Async
+        </div>
+        <div class="pipes-demo__content">
+            <button (click)="onNextValueClicked()">Next value</button>
+        </div>
+        <div class="pipes-demo__content pipes-demo__content--pipe">
+            Pipe return: {{ asyncValue$ | async }}
+        </div>
+    </div>
+    <hr>
+    <div class="pipes-demo__demo">
+        <div class="pipes-demo__content pipes-demo__content--demo-title">
+            Async #2
+        </div>
+        <div class="pipes-demo__content pipes-demo__content--pipe">
+            Pipe return: {{ time$ | async | date : 'M/d/yy, h:mm:ss a'}}
+        </div>
+    </div>
+</div>

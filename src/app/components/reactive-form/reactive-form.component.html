@@ -8,6 +8,7 @@
             <input
                 formControlName="firstName" 
                 type="text" class="form-control" id="firstName"
+                (focus)="onControlFocus('firstName')"
             >
             <div *ngIf="!firstName.valid && !firstName.pristine"
                  class="alert alert-danger">
@@ -24,6 +25,7 @@
             <input
                 formControlName="lastName" 
                 type="text" class="form-control" id="lastName"
+                (focus)="onControlFocus('lastName')"
             >
             <div *ngIf="!lastName.valid && !lastName.pristine"
                  class="alert alert-danger">
@@ -39,7 +41,9 @@
             <label for="addressLineOne">Street address</label>
             <input formControlName="addressLineOne" type="text" class="form-control" id="addressLineOne"
                    required
-                   autocomplete="address-line1">
+                   autocomplete="address-line1"
+                   (focus)="onControlFocus('addressLineOne')"
+                   >
             <div *ngIf="!addressLineOne.valid && !addressLineOne.pristine"
                  class="alert alert-danger">
                   <div *ngIf="addressLineOne.errors.required">
@@ -50,12 +54,14 @@
         <div class="form-control-wrapper">
             <label for="addressLineTwo">Line two</label>
             <input formControlName="addressLineTwo" type="text" class="form-control" id="addressLineTwo"
-                    autocomplete="address-line2">
+                    autocomplete="address-line2"
+                    (focus)="onControlFocus('addressLineTwo')"
+                    >
         </div>
   
         <div class="form-control-wrapper">
           <label for="state">State</label>
-          <select formControlName="state" class="form-control" id="state">
+          <select formControlName="state" class="form-control" id="state" (focus)="onControlFocus('state')">
             <option *ngFor="let state of states" [value]="state">{{state}}</option>
           </select>
           <div *ngIf="!state.valid && !state.pristine"
@@ -67,7 +73,7 @@
         </div>
         <div class="form-control-wrapper">
             <label for="postalCode">Zip code</label>
-            <input formControlName="postalCode" type="text" class="form-control" id="postalCode">
+            <input formControlName="postalCode" type="text" class="form-control" id="postalCode" (focus)="onControlFocus('postalCode')">
             <div *ngIf="!postalCode.valid && !postalCode.pristine"
                  class="alert alert-danger">
                  <div *ngIf="postalCode.errors.required">
@@ -80,7 +86,7 @@
         </div>
         <div class="form-control-wrapper">
             <label for="country">Country</label>
-            <input formControlName="country" type="text" class="form-control" id="country">
+            <input formControlName="country" type="text" class="form-control" id="country" (focus)="onControlFocus('country')">
             <div [hidden]="country.valid || country.pristine"
                  class="alert alert-danger">
               Required
@@ -88,7 +94,7 @@
         </div>
         <div class="form-control-wrapper">
           <label for="email">Email</label>
-          <input formControlName="email" type="text" class="form-control" id="email">
+          <input formControlName="email" type="text" class="form-control" id="email" (focus)="onControlFocus('email')">
           <div *ngIf="!email.valid && !email.pristine"
                class="alert alert-danger">
             <div *ngIf="email.errors.required">Required</div>
@@ -97,7 +103,7 @@
         </div>
         <div class="form-control-wrapper">
           <label for="confirmEmail">Confirm Email</label>
-          <input formControlName="confirmEmail" type="text" class="form-control" id="confirmEmail">
+          <input formControlName="confirmEmail" type="text" class="form-control" id="confirmEmail" (focus)="onControlFocus('confirmEmail')">
           <div *ngIf="!confirmEmail.valid && !confirmEmail.pristine"
               class="alert alert-danger">
               <div *ngIf="confirmEmail.errors.required">Required</div>

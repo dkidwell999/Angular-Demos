@@ -8,22 +8,24 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ForbiddenValidatorDirective } from './directives/custom-validators/forbidden-name.validator';
 import { validateMatchingEmailsDirective } from './directives/custom-validators/email-confirm.validator';
-import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
 import { ReactiveFormModule } from './components/reactive-form/reactive-form.module';
+import { PromiseChainSandboxModule } from './components/promise-chain-sandbox/promise-chain-sandbox.module';
+import { TemplateDrivenFormModule } from './components/template-driven-form/template-driven-form.module';
+import { PipesDemoModule } from './components/pipes-demo/pipes-demo.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TemplateDrivenFormComponent,
-    ForbiddenValidatorDirective,
-    validateMatchingEmailsDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     CommonModule,
-    ReactiveFormModule
+    ReactiveFormModule,
+    TemplateDrivenFormModule,
+    PromiseChainSandboxModule,
+    PipesDemoModule
   ],
   providers: [],
   bootstrap: [AppComponent]

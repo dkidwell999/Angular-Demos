@@ -1,5 +1,5 @@
 import { Directive } from "@angular/core";
-import { AbstractControl, FormGroup, NgForm, NG_VALIDATORS, ValidationErrors, Validator, ValidatorFn } from "@angular/forms";
+import { AbstractControl, FormGroup, NG_VALIDATORS, ValidationErrors, Validator, ValidatorFn } from "@angular/forms";
 import { removeError } from "./validatorHelperFunctions";
 
 /**

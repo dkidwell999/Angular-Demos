@@ -1,0 +1,15 @@
+<div class="observable-demo">
+    <p>
+        Observable Demo
+    </p>
+    <div class="time">
+        Current time: {{ time$ | async | date : 'M/d/yy, h:mm:ss a'}}
+    </div>
+    <div>BTC Value: {{ btcValue$ | async | currency }}</div>
+    <div class="location">
+        Your latitude: {{ (locations$ | async)?.coords.latitude }}
+    </div>
+    <div class="location">
+        Your longitude: {{ (locations$ | async)?.coords.longitude }}
+    </div>
+</div>

@@ -3,15 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TemplateDrivenFormComponent } from './components/template-driven-form/template-driven-form.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ForbiddenValidatorDirective } from './directives/custom-validators/forbidden-name.validator';
-import { validateMatchingEmailsDirective } from './directives/custom-validators/email-confirm.validator';
 import { ReactiveFormModule } from './components/reactive-form/reactive-form.module';
 import { PromiseChainSandboxModule } from './components/promise-chain-sandbox/promise-chain-sandbox.module';
 import { TemplateDrivenFormModule } from './components/template-driven-form/template-driven-form.module';
 import { PipesDemoModule } from './components/pipes-demo/pipes-demo.module';
+import { ObservableDemoModule } from './components/observable-demo/observable-demo.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,9 @@ import { PipesDemoModule } from './components/pipes-demo/pipes-demo.module';
     ReactiveFormModule,
     TemplateDrivenFormModule,
     PromiseChainSandboxModule,
-    PipesDemoModule
+    PipesDemoModule,
+    ObservableDemoModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

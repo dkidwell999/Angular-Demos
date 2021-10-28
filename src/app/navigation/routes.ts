@@ -1,4 +1,5 @@
 import { Routes } from "@angular/router";
+import { ObservableDemoComponent } from "../components/observable-demo/observable-demo.component";
 import { PipesDemoComponent } from "../components/pipes-demo/pipes-demo.component";
 import { PromiseChainSandboxComponent } from "../components/promise-chain-sandbox/promise-chain-sandbox.component";
 import { ReactiveFormComponent } from "../components/reactive-form/reactive-form.component";
@@ -8,5 +9,6 @@ export const routes: Routes = [
     { path: 'reactive-form', component: ReactiveFormComponent },
     { path: 'template-driven-form', component: TemplateDrivenFormComponent },
     { path: 'promise-chain-sandbox', component: PromiseChainSandboxComponent},
-    { path: 'pipes-demo', component: PipesDemoComponent }
+    { path: 'pipes-demo', component: PipesDemoComponent },
+    { path: 'observable-demo', component: ObservableDemoComponent}
   ];
